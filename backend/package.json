@@ -4,7 +4,8 @@
   "description": "Backend для проекта «Web-ларёк» на Express + TypeScript",
   "main": "dist/app.js",
   "scripts": {
-    "lint": "eslint \"src/**/*.ts\" --fix",
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "start": "ts-node src/app.ts",

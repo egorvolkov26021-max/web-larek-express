@@ -3,6 +3,7 @@ import { Error as MongooseError } from 'mongoose';
 import CustomError from '../errors/custom-errors';
 import BadRequestError from '../errors/bad-request-error';
 import ConflictError from '../errors/conflict-error';
+import { INTERNAL_SERVER_ERROR } from '../constants/status-codes';
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
   if (res.headersSent) {
@@ -22,7 +23,9 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
     return res.status(error.statusCode).send({ message: error.message });
   }
 
-  return res.status(500).send({ message: 'Внутренняя ошибка сервера' });
+  return res.status(INTERNAL_SERVER_ERROR).send({
+    message: 'На сервере произошла ошибка',
+  });
 };
 
 export default errorHandler;
